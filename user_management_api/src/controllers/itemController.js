@@ -6,12 +6,10 @@ import {
   findItemById
 } from '../models/itemModel.js';
 
-// @desc    Get all items untuk user yang login
-// @route   GET /api/items
-// @access  Private
+
 export const getItems = async (req, res) => {
   try {
-    // Cari item berdasarkan ID user yang didapat dari middleware auth (req.user.id)
+ 
     const items = await findAllItemsByUserId(req.user.id);
     res.json(items);
   } catch (err) {
@@ -20,9 +18,7 @@ export const getItems = async (req, res) => {
   }
 };
 
-// @desc    Create new item
-// @route   POST /api/items
-// @access  Private
+
 export const createNewItem = async (req, res) => {
   const { title, description } = req.body;
   const userId = req.user.id; // Ambil user ID dari token
@@ -40,9 +36,7 @@ export const createNewItem = async (req, res) => {
   }
 };
 
-// @desc    Update an item
-// @route   PUT /api/items/:id
-// @access  Private
+
 export const updateExistingItem = async (req, res) => {
   const { title, description } = req.body;
   const itemId = req.params.id;
@@ -55,7 +49,7 @@ export const updateExistingItem = async (req, res) => {
       return res.status(404).json({ message: 'Item not found' });
     }
 
-    // Pastikan user yang mengedit adalah pemilik item
+   
     if (item.user_id !== userId) {
       return res.status(401).json({ message: 'Not authorized' });
     }
@@ -68,9 +62,6 @@ export const updateExistingItem = async (req, res) => {
   }
 };
 
-// @desc    Delete an item
-// @route   DELETE /api/items/:id
-// @access  Private
 export const deleteExistingItem = async (req, res) => {
   const itemId = req.params.id;
   const userId = req.user.id;
@@ -82,7 +73,7 @@ export const deleteExistingItem = async (req, res) => {
       return res.status(404).json({ message: 'Item not found' });
     }
 
-    // Pastikan user yang menghapus adalah pemilik item
+   
     if (item.user_id !== userId) {
       return res.status(401).json({ message: 'Not authorized' });
     }
