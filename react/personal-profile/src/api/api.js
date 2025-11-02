@@ -6,12 +6,12 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 /*
  * PENTING:
- * Anda akan mendapatkan URL backend Anda (dari Render) di Langkah 2.
+ * Anda akan mendapatkan URL backend Anda (dari Railway) di Langkah 2.
  * Setelah Anda mendapatkannya, Anda HARUS kembali ke file ini,
- * ganti 'https://NAMA-API-ANDA-DARI-RENDER.onrender.com'
+ * ganti 'https://ALAMAT-DARI-RAILWAY-ANDA.up.railway.app/api'
  * dengan URL Anda yang sebenarnya, lalu 'git push' lagi.
 */
-const productionURL = 'https://NAMA-API-ANDA-DARI-RENDER.onrender.com/api';
+const productionURL = 'https://ALAMAT-DARI-RAILWAY-ANDA.up.railway.app/api';
 const developmentURL = 'http://localhost:5000/api';
 
 const api = axios.create({
@@ -20,4 +20,3 @@ const api = axios.create({
 });
 
 export default api;
-
